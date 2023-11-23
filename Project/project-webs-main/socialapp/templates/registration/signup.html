@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/assets/css/a.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <!-- form dang ky -->
+            <form action="#" method="POST" onsubmit="return kiemtra()" >
+                {% csrf_token %}
+                <h1>Đăng Ký</h1>
+                {% include 'partials/message.html' %}
+                <input type="text" id="username" name="username" placeholder="Tên Tài Khoản " />
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Mật Khẩu" />
+                <input type="password" name="con_password" placeholder="Nhập Lại Mật Khẩu" />
+                <span>Đăng Ký Bằng Cách Liên Kết với</span>
+                <div class="social-container">
+                    <div class="social_link"><a href="#" class="social"><i class="fab fa-facebook-f"></i></a></div>
+                    <div class="social_link"><a href="#" class="social"><i class="fab fa-google-plus-g"></i></a></div>
+                </div>
+                <p>Bạn Đã có tài khoản, <a href="/accounts/signin">Đăng Nhập? </a> </p>
+            
+                <button lass="btn" > ĐĂNG KÝ</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+<script src="/socialapp/static/js/signup.js"></script>
+</html>

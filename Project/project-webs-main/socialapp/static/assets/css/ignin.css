@@ -1,0 +1,224 @@
+:root{
+    --var-color: #fff;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: -20px 0 50px;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+span {
+    margin: 10px;
+    font-size: 16px;
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+form  h1{
+    padding: 30px;
+}
+
+form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    /* text-align: center; */
+}
+
+
+input {
+    border-radius: 20px;
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 75%;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 600px;
+    min-height: 480px;
+}
+    
+/* chỉnh incon kết nối face book ỏr google */
+.social-container {
+    margin: 20px 0;
+}
+
+.social-container .social_link a {
+    
+    border: 1px solid #DDDDDD;
+    /* border-radius: 50%; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 100%;
+    width: 100%;
+}
+.social_link{
+    border: 2px solid #333;
+    display: inline-flex;
+    height: 40px;
+    /* background-color: red; */
+    width: 240px;
+    justify-content: center
+
+    
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 0 solid transparent;
+    width: 100%;
+  }
+  .alert-heading {
+    color: inherit;
+  }
+  .alert-link {
+    font-weight: 700;
+  }
+  .alert-dismissible {
+    padding-right: 3.90625rem;
+  }
+  .alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+  }
+ 
+  .alert-success {
+    color: #215f0c;
+    background-color: #d9f0d1;
+    border-color: #c9ebbe;
+  }
+  .alert-success hr {
+    border-top-color: #b9e5ab;
+  }
+  .alert-success .alert-link {
+    color: #113206;
+  }
+  .alert-info {
+    color: #502c61;
+    background-color: #ebddf1;
+    border-color: #e2cfec;
+  }
+  .alert-info hr {
+    border-top-color: #d7bde5;
+  }
+  .alert-info .alert-link {
+    color: #331c3e;
+  }
+  .alert-warning {
+    color: #853d0c;
+    background-color: #ffe3d1;
+    border-color: #ffd8be;
+  }
+  .alert-warning hr {
+    border-top-color: #ffc9a5;
+  }
+  .alert-warning .alert-link {
+    color: #562808;
+  }
+  .alert-danger {
+    color: #85001e;
+    background-color: #ffccd7;
+    border-color: #ffb8c8;
+  }
+  .alert-danger hr {
+    border-top-color: #ff9fb4;
+  }
+  .alert-danger .alert-link {
+    color: #520012;
+  }
+  .alert-light {
+    color: #818182;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+  }
+  .alert-light hr {
+    border-top-color: #ececf6;
+  }
+  .alert-light .alert-link {
+    color: #686868;
+  }
+  .alert-dark {
+    color: #1d1e1f;
+    background-color: #d7d8d8;
+    border-color: #c7c8c8;
+  }
+  .alert-dark hr {
+    border-top-color: #babbbb;
+  }
+  .alert-dark .alert-link {
+    color: #040505;
+  }

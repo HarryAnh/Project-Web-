@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/ignin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <!-- form dang ky -->
+            <form action="#" method="POST">
+                <h1>Đăng Nhập</h1>
+                {% csrf_token %}
+                {% include 'partials/message.html' %}
+                <input type="text" name="username" placeholder="Name" />
+                <input type="password" name="password" placeholder="Password" />
+                
+                <span>Đăng Nhập Bằng </span>
+                <div class="social-container">
+                    <div class="social_link"><a href="#" class="social"><i class="fab fa-facebook-f"></i></a></div>
+                    <div class="social_link"><a href="#" class="social"><i class="fab fa-google-plus-g"></i></a></div>
+                    
+                    
+                </div>
+                <p>Bạn chưa có tài khoản, <a href="/accounts/signup">Đăng Ký? </a> </p>
+                <button lass="btn" > ĐĂNG NHẬP</button> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

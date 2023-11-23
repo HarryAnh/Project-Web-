@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+    <title>MediaBook</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <!-- <img src="./images/logo.png" alt="Logo"> -->
+            <input type="text" placeholder="Search Mediabook..">
+        </div>
+
+        <div class="nav-middle">
+            <a href="#" class="active">
+                <i class="fa fa-home"></i>
+            </a>
+
+           
+        </div>
+
+        <div class="nav-right">
+            <div class="nav-right-avatar">
+                <img src="{{user_profile.profileimg.url}}" alt="" class="avartar">
+                
+                <!-- <a href="#">
+                    <i class="fa fa-bell"></i>
+                </a>-->
+
+                <a href="#">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a> 
+                <div class="nav-right-hidden">
+                  
+                        <a href="/accounts/profile/{{user_profile.user}}" class="header_avatar">
+                            <div class="profile-link">
+                                <div><img src="{{user_profile.profileimg.url}}" alt="" class="header_avatar-phu"></div>
+                                <div class="profile-link-info">
+                                    <p class="header__user">
+                                            @{{ user.username }}
+                                    </p>
+                                    <p class="header__user">
+                                            Xem trang cá nhân của bạn
+                                    </p>   
+                                </div>
+                            </div>
+                        </a>
+                    
+                    
+                        <a href="/accounts/settings" class="header_avatar">
+                            <div class="profile-link">
+                                <div class="icons">
+
+                                        <i class="fa-solid fa-gear iconss"></i>
+                                    
+                                </div>
+                                <div class="profile-link-info">
+                                    <p class="header__user">
+                                         
+                                    </p>
+                                    <p class="header__user">
+                                            Cài Đặt Trang Cá Nhân
+                                    </p>   
+                                </div>
+                            </div>
+                        </a>
+                        <a href="logout" class="header_avatar">
+                            <div class="profile-link">
+                                <div class="icons">
+
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    
+                                </div>
+                                <div class="profile-link-info">
+                                    <p class="header__user">
+                                        Đăng xuất
+                                    </p>
+                                  
+                                </div>
+                            </div>
+                        </a>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="left-panel">
+            <ul>
+                
+                <li>
+                    <i class="fa fa-user-friends"></i>
+                    <p>Friends</p>
+                </li>
+                <li>
+                    <i class="fa fa-play-circle"></i>
+                    <p>Videos</p>
+                </li>
+               
+                <li>
+                    <i class="fa fa-users"></i>
+                    <p>Groups</p>
+                </li>
+                <li>
+                    <i class="fa fa-bookmark"></i>
+                    <p>Bookmark</p>
+                </li>
+                
+                
+            </ul>
+
+        </div>
+
+
+        <div class="middle-panel">
+
+            <div class="post create">
+                <form action="upload" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="post-top">
+                        <div class="dp">
+                            <img src="{{user_profile.profileimg.url}}" alt="">
+                        </div>
+                        <input type="text" name="caption" placeholder="What's on your mind, {{ user.username }}?" />
+                        <button><i class="fa-solid fa-paper-plane icon"></i></button>
+                    </div>
+                
+                    <div class="post-bottom">
+                    
+                        <div class="action">
+                            <a href="#">
+                                    
+                                <input type="file" name="image_upload" id="file" class="inputfile"  />
+                                <label for="file"><i class="fa fa-image"></i> Photo</label> 
+                                
+    
+                            </a>
+                        </div>
+                        <div class="action">
+                            <a href="#">
+                                    
+                                <input type="file" name="image_upload" id="file" class="inputfile"  />
+                                <label for="file"><i class="fa fa-video"> </i> Video</label> 
+                                
+                            
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% for post in posts reversed %}
+            <div class="post">
+                <div class="post-top">
+                    <!-- <div class="dp">
+                    
+                        <img src="{{ user_profile.profileimg.url}}" alt="">
+                    </div> -->
+                    <div class="post-info">
+                        <p class="name"><a style="text-decoration: none;color:#333;" href="">@{{ post.user }}</a></p>
+                        <span class="time">{{ post.created_at }}</span>
+                    </div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+
+                <div class="post-content">
+                    {{post.caption}}
+           
+                    {% if post.style != 0 %}  
+                        
+                        <img style="border-radius: 10px;" src="/media/{{ post.images }}" class="post-img">
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+
+                    {% if post.no_of_likes == 0 %}
+                        <p>Chưa Có Lượt Thích</p>
+                    {% elif post.no_of_likes == 1 %}
+                        <p>Được Thích Bởi {{post.no_of_likes}} Người</p>
+                    {% else %}
+                        <p>Được Thích Bởi {{post.no_of_likes}} Người</p>
+                    {% endif %}
+                </div>
+                
+                <div class="post-bottom">
+                    <div class="action">
+                        
+                        <a href="/accounts/like-post?post_id={{post.id}}"><i class="far fa-thumbs-up"></i>  <span>Like</span></a>
+                    </div>
+                    <div class="action">
+                        <i class="far fa-comment"></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action">
+                        <i class="fa fa-share"></i>
+                        <span>Share</span>
+                    </div>
+                </div>
+              
+            </div>
+            {% endfor %}
+        </div>
+        <div class="right-panel">
+            <div class="pages-section">
+                <h4>Your pages</h4>
+                <!-- <a class='page' href="#">
+                    <div class="dp">
+                        <img src="./images/logo.png" alt="">
+                    </div>
+                    <p class="name">Cody</p>
+                </a> -->
+
+           
+            </div>
+
+            <div class="friends-section">
+                <h4>Đề Xuất</h4>
+                {% for user_re in user_re  %}
+                
+                <a class='friend' href="/accounts/profile/{{user_re.username}}">
+                    
+                        
+                    <div class="dp">
+                     
+                            <img src="{{user_profile.profileimg.url}}" alt="">
+                       
+                    </div>
+                        
+                    
+                    
+                    <p class="name">{{user_re.username}}</p>
+                </a>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

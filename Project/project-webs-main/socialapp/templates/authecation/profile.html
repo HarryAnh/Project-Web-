@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="{% static 'assets/css/profile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id = "profile">
+        <!-- Pròfile -->
+        <header class="header">
+            <div class="header__text">
+                <a href="/accounts/home"></a>
+            </div>
+        </header>
+        <main>
+            <div class="content__left">
+                <div class="user__avartar">
+                    <!-- add img -->
+                    <img class="image" src="{{user_profile.profileimg.url}}" alt="">
+                </div>
+                <div class="user__name">
+                    <a href="/accounts/home"><span>@{{user_profile.user.username}}</span></a>
+                </div>
+                
+                <div class="content__left-first">
+                    <div class="user__analylist">
+                        <div class="user__item">
+                            <!-- Followers -->
+                            <p>{{user_followers}} Followerss</p>
+                        </div>
+                        <div class="user__item">
+                            <!-- Followings -->
+                            <p>{{user_following}} Followings</p>
+                        </div>
+                        <div class="user__item">
+                        {% if user_post_len == 0 %}
+                            <p>Không có Bài Viết</p>
+                        {% elif user_post_len == 1 %}
+                            <p>{{user_post_len}} Bài Viết</p>
+                        {% else %}
+                            <p>{{user_post_len}} Bài Viết</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="button_follow">
+                    <form action="/accounts/follow" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{user.username}}" name="follower" />
+                        <input type="hidden" value="{{user_object.username}}" name="user" />
+                        {% if user_object.username == user.username %}
+                            <a href="/accounts/settings"  data-ripple=""><div class="btn__connecta"><p>Account Setting</p> </div></a>
+                        {% else %}
+                            <a data-ripple=""><div class="btn__connecta"> <button tyle="submit" ><p>{{button_text}}</p></button></div></a>
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="img">
+                    <ul>
+                        {% for post in user_posts %}
+                        {% if post.style != 1 %}  
+                            <li>
+
+                            </li>
+                            
+                        {% else %}
+                            <li>
+                                <a href="/media/{{post.images}}">
+                                    <img src="/media/{{post.images}}" alt="">
+                                </a>
+                            </li>
+                        {%endif%}
+                        {% endfor  %}
+                    </ul>
+           
+                    
+               </div>
+            </div>
+                
+
+                
+           
+            
+           
+        
+        
+            <!-- Content -->
+            <div class="content__right">
+                <div class="content__header">
+                    <div class="content__menu">
+                        <!-- menu -->
+                       
+                        <li class="link">
+                            <a class="menu" href="#">Photos</a>
+                        </li>
+                        <li class="link">
+                            <a class="menu" href="#">Videos</a>
+                        </li>
+                        <li class="link">
+                            <a class="menu" href="#">Notifications</a>
+                        </li>
+                        <li class="link">
+                            <a class="menu" href="#">Videos</a>
+                        </li>  
+                    </div>
+
+                </div>
+
+                <div class="body__header">
+                    <!-- <div class="body__header-creatpost">
+                        <div class="body__header-avartar">
+                            <img class="body__header-img" src="C:\Users\84764\OneDrive - thyismmycrush\Desktop\home-twitch\img\CSM.jpeg" style="margin: auto;"alt="">
+                        </div>
+            
+                        <form class="body__header-post-text">
+                            <a href="#"><input type="text_1" id="fname" name="fname" placeholder="Bạn đang nghĩ gì?"></a>
+                            
+                        </form>
+                        <div class="body__header-icon">
+                            <i class="fa-solid fa-paper-plane icon"></i>
+                        </div>
+        
+                    </div> -->
+                    
+                </div>
+        
+                <!-- Các bài post -->
+                
+                  
+                {% for post in user_posts reversed %}
+                <div class="post" style="margin-left: 0px; ">
+                    
+                    <div class="post-top" style="background-color: #ffffff;">
+                        <!-- <div class="dp">
+                            <img src="./eiu1.jpg" alt="">
+                        </div> -->
+                        <div class="post-info">
+                            <p class="name" style="background-color: #ffffff;"><a style="text-decoration: none;color:#333;" href="">@{{ post.user }}</a></p>
+                            <p style="background-color: #ffffff" class="time">{{ post.created_at }}</p>
+                        </div>
+                        <div class="chinhsua">
+                            <a class="icon"href="#"><i class="fas fa-ellipsis-h"></i></a>
+                                <ul class="post-btn">
+                                    
+                                    <li>
+                                        <a class="post__btn" href="#">
+                                            <div class="post__icon ">
+                                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                            </div>
+                                            <div class="post__des">
+                                                <p>
+                                                    Chỉnh sửa bài viết
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+        
+                                    <li>
+                                        <a class="post__btn" href="#">
+                                            <div class="post__icon">
+                                                <i class="fa-solid fa-rectangle-xmark"></i>
+                                            </div>
+                                            <div class="post__des">
+                                                <p>Xóa bài viết</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                        </div>
+                        
+                    </div>
+        
+                    <div class="post-content" style="background-color: #ffffff; ">
+                        {{post.caption}}
+                        {% if post.style != 0 %}  
+                            <img style="border-radius: 10px;" src="/media/{{ post.images }}" class="post-img">
+                        {% else %}
+                            <p></p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="post-bottom" style="background-color: #ffffff;">
+                        <div class="action" >
+                            <a href="//like-post?post_id={{post.id}}"><i class="far fa-thumbs-up"></i>  <span>Like</span></a>
+                          
+                        </div>
+                        <div class="action">
+                            <i class="far fa-comment"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="action">
+                            <i class="fa fa-share"></i>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor  %}
+            </div> 
+           
+            
+
+            
+            
+        </main>
+        
+    </div>
+</body>
+</html>
